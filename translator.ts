@@ -18,7 +18,10 @@ export default function tranlsate(text: string): string {
     return '';
   }
 
-  const splitText = text.trim().split(' ');
+  const splitText = text
+    .trim()
+    .split(/[,.!?:;…\-— \t]/)
+    .filter(Boolean);
   const result = [];
   for (const word of splitText) {
     const emoji = WORD_TO_EMOJI[word.toLowerCase()];
